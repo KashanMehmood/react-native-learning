@@ -11,38 +11,36 @@ import {
 import Home from './component/Home'
 
 class App extends Component{
-  constructor(props){
-
-    super(props);
-    this.state = {
-      userName:"kashan"
-    }
-  }
-
-  test(){
-    this.setState({userName:"Kashi Test"})
-  }
-
-  // jtni bar state update krogy utni bar render call hoga
   render(){
     return(
       <View>
-        <Text>{this.state.userName}</Text>
-        <Button onPress={ 
-          ()=>{
-            this.setState({userName:"Kashi"})
-          } 
-        }
-        title="setState" />
+        {/* inline style */}
+        <Text style={ {fontSize:130} }> Hello world</Text>
 
-        <Button onPress={ 
-          ()=>{
-            this.test()
-          } 
-        }
-        title="Test" />
+        {/* style with stylesheet */}
+        <Text style={styles.red}> Hello world</Text>
+        
+        {/* apply mutiple objects of styles */}
+        <Text style={[styles.font,styles.redColor]}> Hello world</Text>
+
       </View>
     );
   }
 }
+
+{/* styele with stylesheet */}
+const styles = StyleSheet.create({
+  red:{
+    color:'red',
+    fontSize:40
+  },
+  font:{
+    fontSize:40,
+  },
+  redColor:{
+    color:'red',
+  }
+})
+
+
 export default App;
