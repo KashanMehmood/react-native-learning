@@ -6,14 +6,25 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
 } from 'react-native';
 
 const App = () => {
+  function login(){
+    alert("login here");
+
+  }
   return (
     <View>
-      <Text>
-        Hello React Native
-      </Text>
+      <Text>Functional Component</Text>
+      <Button 
+        title="CLick Me.!"
+        onPress={ ()=>{ alert('You Clicked on ME.! ') } }
+      ></Button>
+      <Button 
+        title="login"
+        onPress={login}
+      ></Button>
     </View>
   );
 };
