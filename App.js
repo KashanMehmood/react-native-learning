@@ -7,15 +7,32 @@ import {
   Text,
   StatusBar,
   Button,
+  TextInput
 } from 'react-native';
 
 class App extends Component{
+  constructor(props){
+    super();
+    this.state = {
+      userName: ''
+    }
+
+  }
   render(){
     return(
-      <View style={styles.parent} >
-        <Text style={styles.childOne}> Hello world</Text>
-        <Text style={styles.childTwo}> Hello world</Text>
-        <Text style={styles.childThree}> Hello world</Text>
+      <View style={styles.parent}>
+        <Text>Handling TextInput</Text>
+        <Text>{this.state.userName}</Text>
+        <TextInput 
+          placeholder={"Enter your name"}
+          onChangeText={ (e) => { this.setState({userName:e}) } }
+        >
+        </TextInput>
+
+        <Button 
+          title="Click"
+          onPress={ ()=>{ alert(this.state.userName) } }
+         />
       </View>
     );
   }
@@ -25,25 +42,7 @@ class App extends Component{
 const styles = StyleSheet.create({
   parent:{
     flex:1,
-
-    // to covert flex into row
-    // flexDirection: 'row'
-
-    // to covert flex into row
-    // flexDirection: 'row-reverse'
   },
-  childOne:{
-    flex:1,
-    backgroundColor:'red'
-  },
-  childTwo:{
-    flex:2,
-    backgroundColor:'yellow'
-  },
-  childThree:{
-    flex:3,
-    backgroundColor:'green'
-  }
 })
 
 
