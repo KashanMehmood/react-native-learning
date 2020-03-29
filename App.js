@@ -8,29 +8,13 @@ import {
   StatusBar,
   Button,
 } from 'react-native';
+import Home from './component/Home'
 
-class App extends Component {
-
-  login(){
-    alert('You Clicked on ME.! ');
-  }
-  render(){
-    return (
-      <View>
-        <Text>Class Component</Text>
-        <Button 
-          title="CLick Me.!"
-          onPress={ ()=>{ alert('You Clicked on ME.! ') } }
-        >
-        </Button>
-        <Button 
-          title="Login"
-          onPress={this.login}
-          >
-        </Button>
-      </View>
-    );
-  }
-};
-
+const App = () =>{
+  return(
+    <View>
+      <Home name="kashan" />
+    </View>
+  )
+} 
 export default App;
