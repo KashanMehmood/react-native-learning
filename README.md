@@ -22,3 +22,6 @@
             1. npm install react-navigation-stack @react-native-community/masked-view
             2. https://reactnavigation.org/docs/4.x/hello-react-navigation
 
+        6.  Stack Navigation
+            npm install react-navigation-tabs
+
