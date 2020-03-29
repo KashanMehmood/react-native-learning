@@ -1,62 +1,61 @@
-import React, { Component } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  TextInput
-} from 'react-native';
+import React from 'react';
+import { Button, View, Text } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-class App extends Component{
-  constructor(props){
-    super();
-    this.state = {
-      userName: '',
-      password:''
-    }
-
-  }
-
-  submit(){
-    console.warn(this.state);
-  }
-
-  render(){
-    return(
-      <View style={styles.parent}>
-        <Text>Handling TextInput</Text>
-        <Text>{this.state.userName}</Text>
-        <TextInput 
-          placeholder={"Enter your name"}
-          onChangeText={ (text) => { this.setState({userName:text}) } }
-        >
-        </TextInput>
-
-        <TextInput 
-          placeholder={"Enter your password"}
-          secureTextEntry={true}
-          onChangeText={ (text) => { this.setState({password:text}) } }
-        >
-        </TextInput>
-
-        <Button 
-          title="Click"
-          onPress={ ()=>{ this.submit() } }
-         />
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Home Screen</Text>
+        <Button
+          title="Go to Profile"
+          // onPress={() => this.props.navigation.navigate('Profile')}
+          onPress={() => this.props.navigation.push('Profile')}
+        />
       </View>
     );
   }
 }
 
-{/* set parent flex always 1 */}
-const styles = StyleSheet.create({
-  parent:{
-    flex:1,
-  },
-})
+const Profile = (props) => {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Profile Component</Text>
+      <Button
+        title="Go to About"
+        onPress={() => props.navigation.navigate('About')}
+      />
+      <Button
+        title="Go back"
+        onPress={() => props.navigation.goBack()}
+      />
+    </View>
+  );
+};
 
+const About = (props) => {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>About Component</Text>
+      <Button
+        title="Go to Home"
+        onPress={() => props.navigation.navigate('Home')}
+      />
+      <Button
+        title="Go back"
+        onPress={() => props.navigation.goBack()}
+      />
+    </View>
+  );
+};
 
-export default App;
+const AppNavigator = createStackNavigator({
+  // initial screen name should be Home
+  // screen: <component-name>
+  Home: { screen: HomeScreen },
+  Profile: { screen: Profile },
+  About: { screen: About },
+});
+
+export default createAppContainer(AppNavigator);
