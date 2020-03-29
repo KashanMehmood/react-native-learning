@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,24 +9,28 @@ import {
   Button,
 } from 'react-native';
 
-const App = () => {
-  function login(){
-    alert("login here");
+class App extends Component {
 
+  login(){
+    alert('You Clicked on ME.! ');
   }
-  return (
-    <View>
-      <Text>Functional Component</Text>
-      <Button 
-        title="CLick Me.!"
-        onPress={ ()=>{ alert('You Clicked on ME.! ') } }
-      ></Button>
-      <Button 
-        title="login"
-        onPress={login}
-      ></Button>
-    </View>
-  );
+  render(){
+    return (
+      <View>
+        <Text>Class Component</Text>
+        <Button 
+          title="CLick Me.!"
+          onPress={ ()=>{ alert('You Clicked on ME.! ') } }
+        >
+        </Button>
+        <Button 
+          title="Login"
+          onPress={this.login}
+          >
+        </Button>
+      </View>
+    );
+  }
 };
 
 export default App;
