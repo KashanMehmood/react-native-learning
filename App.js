@@ -8,37 +8,41 @@ import {
   StatusBar,
   Button,
 } from 'react-native';
-import Home from './component/Home'
 
 class App extends Component{
   render(){
     return(
-      <View>
-        {/* inline style */}
-        <Text style={ {fontSize:130} }> Hello world</Text>
-
-        {/* style with stylesheet */}
-        <Text style={styles.red}> Hello world</Text>
-        
-        {/* apply mutiple objects of styles */}
-        <Text style={[styles.font,styles.redColor]}> Hello world</Text>
-
+      <View style={styles.parent} >
+        <Text style={styles.childOne}> Hello world</Text>
+        <Text style={styles.childTwo}> Hello world</Text>
+        <Text style={styles.childThree}> Hello world</Text>
       </View>
     );
   }
 }
 
-{/* styele with stylesheet */}
+{/* set parent flex always 1 */}
 const styles = StyleSheet.create({
-  red:{
-    color:'red',
-    fontSize:40
+  parent:{
+    flex:1,
+
+    // to covert flex into row
+    // flexDirection: 'row'
+
+    // to covert flex into row
+    // flexDirection: 'row-reverse'
   },
-  font:{
-    fontSize:40,
+  childOne:{
+    flex:1,
+    backgroundColor:'red'
   },
-  redColor:{
-    color:'red',
+  childTwo:{
+    flex:2,
+    backgroundColor:'yellow'
+  },
+  childThree:{
+    flex:3,
+    backgroundColor:'green'
   }
 })
 
