@@ -14,10 +14,16 @@ class App extends Component{
   constructor(props){
     super();
     this.state = {
-      userName: ''
+      userName: '',
+      password:''
     }
 
   }
+
+  submit(){
+    console.warn(this.state);
+  }
+
   render(){
     return(
       <View style={styles.parent}>
@@ -25,13 +31,20 @@ class App extends Component{
         <Text>{this.state.userName}</Text>
         <TextInput 
           placeholder={"Enter your name"}
-          onChangeText={ (e) => { this.setState({userName:e}) } }
+          onChangeText={ (text) => { this.setState({userName:text}) } }
+        >
+        </TextInput>
+
+        <TextInput 
+          placeholder={"Enter your password"}
+          secureTextEntry={true}
+          onChangeText={ (text) => { this.setState({password:text}) } }
         >
         </TextInput>
 
         <Button 
           title="Click"
-          onPress={ ()=>{ alert(this.state.userName) } }
+          onPress={ ()=>{ this.submit() } }
          />
       </View>
     );
