@@ -25,3 +25,6 @@
         6.  Stack Navigation
             npm install react-navigation-tabs
 
+        7.  Drawer Navigation
+            npm install react-navigation-drawer
+

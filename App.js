@@ -1,69 +1,56 @@
 import React from 'react';
 import { Button, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
-class HomeScreen extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Home!</Text>
-        <Button
-          title="Go to Settings"
-          onPress={() => this.props.navigation.navigate('Settings')}
-        />
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
+
+        <Open nav={this.props.navigation} />
       </View>
     );
   }
 }
 
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-        <Button
-          title="Go to Home"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-      </View>
-    );
-  }
+function Open(props) {
+  return (
+    <View style={{ flex: 1 }}>
+      <Button
+        title="Open Drawer"
+        onPress={
+          () => props.nav.openDrawer()
+        }
+      />
+    </View>
+  );
 }
 
-class DetailsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Details!</Text>
-      </View>
-    );
-  }
+function Profile(props) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Profile !</Text>
+      <Open nav={props.navigation} />
+    </View>
+  );
 }
 
-const HomeStack = createStackNavigator({
-  Home: { screen: HomeScreen },
-  Details: { screen: DetailsScreen },
-});
+function About(props) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>About !</Text>
+      <Open nav={props.navigation} />
+    </View>
+  );
+}
 
-const SettingsStack = createStackNavigator({
-  Settings: { screen: SettingsScreen },
-  Details: { screen: DetailsScreen },
+const appNavigator = createDrawerNavigator({
+  Home: { screen: App },
+  About: { screen: About },
+  Profile: { screen: Profile },
 });
 
 
-export default createAppContainer(createBottomTabNavigator(
-  {
-    Home: { screen: HomeStack },
-    Settings: { screen: SettingsStack },
-  }
-));
+export default createAppContainer(appNavigator);
