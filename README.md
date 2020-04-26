@@ -28,3 +28,6 @@
         7.  Drawer Navigation
             npm install react-navigation-drawer
 
+4.  React Native Swiper
+    1.  https://github.com/leecade/react-native-swiper
+

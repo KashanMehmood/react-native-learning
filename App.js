@@ -1,43 +1,52 @@
-import React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image
-} from 'react-native';
+import React, { Component } from 'react'
+import { AppRegistry, StyleSheet, Text, View } from 'react-native'
 
-class App extends React.Component {
+import Swiper from 'react-native-swiper'
+
+const styles = StyleSheet.create({
+  wrapper: {},
+  slide1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB'
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#97CAE5'
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#92BBD9'
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold'
+  }
+})
+
+export default class SwiperComponent extends Component {
   render() {
     return (
-      <View style={styles.container}>
-
-
-        <Image source={{uri: 'https://reactjs.org/logo-og.png'
-          }}
-          style={styles.container}
-        >
-        </Image>
-        {/* <ImageBackground source={image} style={styles.image}>
-          <Text style={styles.text}>Inside</Text>
-        </ImageBackground> */}
-      </View>
-    );
+      <Swiper style={styles.wrapper}>
+        
+        <View style={styles.slide1}>
+          <Text style={styles.text}>Hello Swiper</Text>
+        </View>
+        <View style={styles.slide2}>
+          <Text style={styles.text}>Beautsfsdfiful</Text>
+        </View>
+        <View style={styles.slide3}>
+          <Text style={styles.text}>And simple</Text>
+        </View>
+      </Swiper>
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  image: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center"
-  },
-  text: {
-    color: "grey",
-    fontSize: 30,
-    fontWeight: "bold"
-  }
-});
-export default App;
+// AppRegistry.registerComponent('ReactNativeLearning', () => SwiperComponent)
