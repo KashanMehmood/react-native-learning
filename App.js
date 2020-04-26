@@ -1,56 +1,43 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image
+} from 'react-native';
 
 class App extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home!</Text>
+      <View style={styles.container}>
 
-        <Open nav={this.props.navigation} />
+
+        <Image source={{uri: 'https://reactjs.org/logo-og.png'
+          }}
+          style={styles.container}
+        >
+        </Image>
+        {/* <ImageBackground source={image} style={styles.image}>
+          <Text style={styles.text}>Inside</Text>
+        </ImageBackground> */}
       </View>
     );
   }
 }
 
-function Open(props) {
-  return (
-    <View style={{ flex: 1 }}>
-      <Button
-        title="Open Drawer"
-        onPress={
-          () => props.nav.openDrawer()
-        }
-      />
-    </View>
-  );
-}
-
-function Profile(props) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile !</Text>
-      <Open nav={props.navigation} />
-    </View>
-  );
-}
-
-function About(props) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>About !</Text>
-      <Open nav={props.navigation} />
-    </View>
-  );
-}
-
-const appNavigator = createDrawerNavigator({
-  Home: { screen: App },
-  About: { screen: About },
-  Profile: { screen: Profile },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
+  text: {
+    color: "grey",
+    fontSize: 30,
+    fontWeight: "bold"
+  }
 });
-
-
-export default createAppContainer(appNavigator);
+export default App;
